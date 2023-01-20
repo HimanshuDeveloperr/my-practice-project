@@ -1,13 +1,9 @@
-import UserForm from './Components/UserForm';
-import './App.css';
-
+import React from 'react';
+import AddUsers from './Components/Users/AddUsers';
 function App() {
   return (
     <div>
-      <h1>practice project</h1>
-      <div>
-        <UserForm/>
-      </div>
+      <AddUsers/>
     </div>
   );
 }
