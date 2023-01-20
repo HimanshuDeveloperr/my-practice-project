@@ -1,39 +1,48 @@
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import Card from "../UI/Card";
-import classes from "./AddUsers.module.css"
+import classes from "./AddUsers.module.css";
 import Button from "../UI/Button";
 
-const AddUsers=(props)=>{
-    const [enteredUsername, setEnteredUsername] = useState('');
-  const [enteredAge, setEnteredAge] = useState('');
+const AddUsers = (props) => {
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredAge, setEnteredAge] = useState("");
 
-    const ADDUSERhandler=(event)=>{
-   event.preventDefault();
-   console.log(enteredUsername, enteredAge);
+  const ADDUSERhandler = (event) => {
+    event.preventDefault();
+    console.log(enteredUsername, enteredAge);
+    setEnteredUsername("");
+    setEnteredAge("");
+  };
 
-    }
+  const usernameChangeHandler = (event) => {
+    setEnteredUsername(event.target.value);
+  };
 
-    const usernameChangeHandler = (event) => {
-        setEnteredUsername(event.target.value);
-      };
-    
-      const ageChangeHandler = (event) => {
-        setEnteredAge(event.target.value);
-      };
-return(
+  const ageChangeHandler = (event) => {
+    setEnteredAge(event.target.value);
+  };
+  return (
     <Card className={classes.input}>
-
-    <form onSubmit={ADDUSERhandler}>
+      <form onSubmit={ADDUSERhandler}>
         <label htmlFor="Username">Username</label>
-        <input type="text" id="Username" onChange={usernameChangeHandler}/>
+        <input
+          type="text"
+          id="Username"
+          value={enteredUsername}
+          onChange={usernameChangeHandler}
+        />
         <label htmlFor="Age">Age (Years)</label>
-        <input type="number" id="Age" onChange={ageChangeHandler}/>
+        <input
+          type="number"
+          id="Age"
+          value={enteredAge}
+          onChange={ageChangeHandler}
+        />
         <Button type="submit">Add User</Button>
-    </form>
+      </form>
     </Card>
-)
-}
+  );
+};
 
 export default AddUsers;
