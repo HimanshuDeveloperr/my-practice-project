@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 
 import Card from "../UI/Card";
 import classes from "./AddUsers.module.css";
@@ -7,6 +7,9 @@ import ErrorModal from "../UI/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
 
 const AddUsers = (props) => {
+  const nameInputRef=useRef()
+  const ageInputRef=useRef()
+
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
   const[error,seterror]=useState()
@@ -45,8 +48,7 @@ const AddUsers = (props) => {
   const errorHandler=()=>{
     seterror(null);
   }
-  return (
-    <Wrapper>
+  return <Wrapper>
 
    {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
     <Card className={classes.input}>
@@ -57,6 +59,7 @@ const AddUsers = (props) => {
           id="Username"
           value={enteredUsername}
           onChange={usernameChangeHandler}
+          ref={nameInputRef}
         />
         <label htmlFor="Age">Age (Years)</label>
         <input
@@ -64,6 +67,7 @@ const AddUsers = (props) => {
           id="Age"
           value={enteredAge}
           onChange={ageChangeHandler}
+          ref={ageInputRef}
         />
         <Button type="submit">Add User</Button>
       </form>
@@ -71,7 +75,7 @@ const AddUsers = (props) => {
     </Wrapper>
 
     
-  );
+  
 };
 
 export default AddUsers;
