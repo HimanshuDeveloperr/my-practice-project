@@ -23,7 +23,7 @@ const AddUsers = (props) => {
     }
     if(+enteredAge<1){
       seterror({
-        title:'Invalid input',
+        title:'Invalid Age',
         message: 'Please enter a valid age (> 0).',
       })
         return
@@ -40,10 +40,14 @@ const AddUsers = (props) => {
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
   };
+
+  const errorHandler=()=>{
+    seterror(null);
+  }
   return (
     <div>
 
-   {error && <ErrorModal title={error.title} message={error.message}/>}
+   {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
     <Card className={classes.input}>
       <form onSubmit={ADDUSERhandler}>
         <label htmlFor="Username">Username</label>
