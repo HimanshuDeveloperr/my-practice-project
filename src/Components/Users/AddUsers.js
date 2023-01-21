@@ -10,14 +10,14 @@ const AddUsers = (props) => {
   const nameInputRef=useRef()
   const ageInputRef=useRef()
 
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+
   const[error,seterror]=useState()
 
   const ADDUSERhandler = (event) => {
     event.preventDefault();
-    console.log(nameInputRef.current.value)
-    if(enteredUsername.trim().length===0 || enteredAge.trim().length===0){
+    const Name=nameInputRef.current.value
+    const Age=ageInputRef.current.value
+    if(Name.trim().length===0 || Age.trim().length===0){
       seterror(
         {
           title:'Invalid input',
@@ -26,25 +26,17 @@ const AddUsers = (props) => {
       )
         return;
     }
-    if(+enteredAge<1){
+    if(+Age<1){
       seterror({
         title:'Invalid Age',
         message: 'Please enter a valid age (> 0).',
       })
         return
     }
-    props.onAdd(enteredUsername, enteredAge);
-    setEnteredUsername("");
-    setEnteredAge("");
+    props.onAdd(Name, Age);
   };
 
-  const usernameChangeHandler = (event) => {
-    setEnteredUsername(event.target.value);
-  };
 
-  const ageChangeHandler = (event) => {
-    setEnteredAge(event.target.value);
-  };
 
   const errorHandler=()=>{
     seterror(null);
@@ -58,16 +50,12 @@ const AddUsers = (props) => {
         <input
           type="text"
           id="Username"
-          value={enteredUsername}
-          onChange={usernameChangeHandler}
           ref={nameInputRef}
         />
         <label htmlFor="Age">Age (Years)</label>
         <input
           type="number"
           id="Age"
-          value={enteredAge}
-          onChange={ageChangeHandler}
           ref={ageInputRef}
         />
         <Button type="submit">Add User</Button>
