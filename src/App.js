@@ -9,11 +9,11 @@ function App() {
     });
   };
   return (
-    <>
+    <React.Fragment>
       <AddUsers onAdd={Addhandler} />
       <UserList users={userData} />
-    </>
-    // it will also work as a wrapper but it is not a good practice to use it like this.
+    </React.Fragment>
+    // it will also work as a wrapper but it is a good practice.
   );
 }
 
