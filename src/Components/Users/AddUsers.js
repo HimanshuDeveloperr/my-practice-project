@@ -9,6 +9,7 @@ import Wrapper from "../Helpers/Wrapper";
 const AddUsers = (props) => {
   const nameInputRef=useRef()
   const ageInputRef=useRef()
+  const collegeInputRef=useRef()
 
 
   const[error,seterror]=useState()
@@ -17,7 +18,9 @@ const AddUsers = (props) => {
     event.preventDefault();
     const Name=nameInputRef.current.value
     const Age=ageInputRef.current.value
-    if(Name.trim().length===0 || Age.trim().length===0){
+    const College=collegeInputRef.current.value
+
+    if(Name.trim().length===0 || Age.trim().length===0 || College.trim().length===0){
       seterror(
         {
           title:'Invalid input',
@@ -33,9 +36,11 @@ const AddUsers = (props) => {
       })
         return
     }
-    props.onAdd(Name, Age);
+    props.onAdd(Name, Age,College);
     nameInputRef.current.value=""
     ageInputRef.current.value=""
+    collegeInputRef.current.value=""
+
   };
 
 
@@ -60,6 +65,13 @@ const AddUsers = (props) => {
           id="Age"
           ref={ageInputRef}
         />
+        <label htmlFor="Usercollege">College</label>
+        <input
+          type="text"
+          id="Usercollege"
+          ref={collegeInputRef}
+        />
+
         <Button type="submit">Add User</Button>
       </form>
     </Card>
