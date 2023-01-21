@@ -5,7 +5,7 @@ function App() {
   const [userData, setUserData] = useState([]);
   const Addhandler = (uName, uAge) => {
     setUserData((prevData) => {
-      return [...prevData, { name: uName, age: uAge }];
+      return [...prevData, { name: uName, age: uAge,id:Math.random().toString() }];
     });
   };
   return (
