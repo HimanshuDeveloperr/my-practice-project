@@ -31,11 +31,19 @@ const ErrorModal = (props) => {
         <Backdrop onConfirm={props.onConfirm} />,
         document.getElementById("backdrop-root")
       )}
+      {ReactDOM.createPortal(
+        <Overlay
+          title={props.title}
+          message={props.message}
+          onConfirm={props.onConfirm}
+        />,
+        document.getElementById("overlay-root")
+      )}
     </React.Fragment>
   );
 };
 export default ErrorModal;
 
-// here we are creating  a portal which will help the modal to not be nested with our other rendered elements instead it will put the modal outside our app.js component.
+// react gives us the privilege to use its features in our app and these features are displayed to us in the browser by the react dom 
 
-// first import react from react-dom then simply created a function and return the elements we want to return in our parent component then in the root jsx we simply create a portal that takes two args 1:-the element we want to be rendered 2:-where we want it to be rendered.
+// react is a library and react dom provides the browser the desired state that we want.
