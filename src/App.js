@@ -9,10 +9,11 @@ function App() {
     });
   };
   return (
-    <div>
+    <>
       <AddUsers onAdd={Addhandler} />
       <UserList users={userData} />
-    </div>
+    </>
+    // it will also work as a wrapper but it is not a good practice to use it like this.
   );
 }
 
