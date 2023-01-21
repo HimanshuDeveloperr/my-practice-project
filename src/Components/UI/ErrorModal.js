@@ -44,6 +44,4 @@ const ErrorModal = (props) => {
 };
 export default ErrorModal;
 
-// react gives us the privilege to use its features in our app and these features are displayed to us in the browser by the react dom 
-
-// react is a library and react dom provides the browser the desired state that we want.
+// the changes made by the portal could only be seen in the rendered actual dom portal are used to renderd the elements into other places we need them to be rendered.
